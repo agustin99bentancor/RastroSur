@@ -1,0 +1,114 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Empresa {
+  id        Int       @id @default(autoincrement())
+  nombre    String
+  email     String?   @unique
+  direccion String?
+  usuarios  Usuario[]
+  lotes     Lote[]
+  createdAt DateTime  @default(now())
+  password    String
+}
+
+model Usuario {
+  id          Int      @id @default(autoincrement())
+  empresaId   Int
+  empresa     Empresa  @relation(fields: [empresaId], references: [id])
+  email       String   @unique
+  nombre      String
+  password    String
+  rol         Rol
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+enum Rol {
+  ESPECTADOR
+  ADMIN
+  USER
+}
+
+model Lote {
+  id        Int        @id @default(autoincrement())
+  empresaId Int
+  empresa   Empresa    @relation(fields: [empresaId], references: [id])
+  nombre    String
+  descripcion String?
+  ubicacion String?
+  animales  Vaca[]
+  tipo      TipoLote
+  createdAt DateTime @default(now())
+}
+
+enum TipoLote {
+  CRIA
+  ENGORDE
+  ORDENIE
+}
+
+model Vaca {
+  id          Int            @id @default(autoincrement())
+  loteId      Int
+  lote        Lote           @relation(fields: [loteId], references: [id])
+  caravanaId  String         @unique
+  raza        Raza
+  fechaNacimiento DateTime?
+  pesoActual  Float?
+  estado      Estado         @default(VIVO)
+  eventos     EventoAnimal[]
+  padreId    Int?
+  madreId    Int?
+  sexo Sexo
+  createdAt DateTime @default(now())
+  }
+
+enum Sexo {
+  MACHO
+  HEMBRA
+}
+
+enum Raza {
+  Hereford
+  Angus
+  Braford
+  Brangus
+}
+enum Estado {
+  MUERTO
+  VENDIDO
+  SACRIFICADO
+  VIVO
+}
+
+model EventoAnimal {
+  id         Int      @id @default(autoincrement())
+  animalId   Int
+  animal     Vaca   @relation(fields: [animalId], references: [id])
+  tipo       TipoEvento
+  fecha      DateTime @default(now())
+  descripcion String?
+  datosExtra Json?
+  
+  vacuna    String?
+  observacion String?
+  dosis      Float?
+  veterinario String?
+}
+
+enum TipoEvento {
+  NACIMIENTO
+  PESO
+  VENTA
+  MUERTE
+  SACRIFICIO
+  TRASLADO
+  VACUNA
+  VETERINARIO 
+}
