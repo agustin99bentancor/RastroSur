@@ -1,0 +1,53 @@
+.header {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    .header {
+        padding-left: 2rem; 
+        padding-right: 2rem;
+    }
+}
+
+.header-button {
+    color: var(--secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 0.175rem;
+    font-weight: 600;
+    width: 6.375rem;
+    border: 2.2px solid var(--secondary);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--surface);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.header-left h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;          /* ExtraBold */
+  font-style: italic;
+  font-size: 32px;
+  text-align: center;
+  -webkit-font-smoothing: antialiased; /* Suavizado para Mac/Chrome */
+  -moz-osx-font-smoothing: grayscale;   /* Suavizado para Firefox */
+  letter-spacing: -0.02em;             /* Ajuste fino de espacio */
+}
+
+.header-left .logo {
+    height: 3rem;
+    width: auto;
+}
+
+.header-right {
+    padding-right: 3.5rem;
+}

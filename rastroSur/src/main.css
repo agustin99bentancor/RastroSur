@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  --primary: #5CD6BA;
+  --secondary: #0EAA66;
+  --dark: #2E2E3A;
+  --dark-light: #7D869C;
+  --light-main: #D9D9D9;
+
+  --text-main: #101817;      /* Casi negro orgánico */
+  --text-muted: #64748b;    /* Para textos secundarios */
+
+  --bg-app: #F8FAFB;        /* Un blanco apenas azulado, muy limpio */
+  --surface: #FFFFFF;       /* Blanco puro para tarjetas/cards */
+}

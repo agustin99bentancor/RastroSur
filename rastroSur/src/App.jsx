@@ -1,18 +1,13 @@
 import { useState } from 'react'
 import { Routes, Route, Link } from 'react-router-dom'
-import Homepage from '../pages/home.jsx'
+import Homepage from './pages/home.jsx'
+import Header from './component/header.jsx';
 
 function App() {
   return (
     <div> 
-
-    <nav>
-      <Link to="/home" className="nav-item">Homepage</Link>
-      <Link to="/about" className="nav-item">About Little Lemon</Link>
-      <Link to="/contact" className="nav-item">Contact</Link>
-    </nav>
+      <Header/>
       <Routes> 
-
         <Route path="/home" element={<Homepage />}></Route> 
       </Routes>
     </div>
