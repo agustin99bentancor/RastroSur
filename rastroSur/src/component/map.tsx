@@ -8,7 +8,7 @@ import L from 'leaflet';
 import icon from '../../node_modules/leaflet/dist/images/marker-icon.png';
 import iconShadow from '../../node_modules/leaflet/dist/images/marker-shadow.png';
 
-import pin from '../assets/pin.png';
+import pin from "../assets/pin.png";
 
 let DefaultIcon = L.icon({
     iconUrl: icon,
@@ -34,13 +34,13 @@ type Props = {
 const MapaBasico: React.FC<Props> = ({
   center = [-34.9034098, -56.1812591],
   zoom = 14,
-  height = 200,
+  height = 160,
   showPopupText = 'Rastro Sur oficina central',
 }) => {
   const posicion: [number, number] = center;
 
   return (
-    <div style={{ height: height, width: 240 }}>
+    <div style={{ height: height, width: 200 }}>
       <MapContainer
         center={center}
         zoom={zoom}

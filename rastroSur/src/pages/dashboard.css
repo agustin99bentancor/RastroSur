@@ -1,0 +1,93 @@
+.dashboard {
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+}
+
+.dashboard-menu {
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #f5f5f5;
+    display: grid;
+    justify-content: center;
+}
+
+.dashboard-menu h1{
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.action-btn {
+    display: flex;
+    gap: 40px;
+    padding: 60px 20px;
+    padding-top: 0;
+}
+
+.action-btn button {
+    width: 180px;
+    height: 120px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+}
+
+.action-btn button:nth-child(1) {
+    background-color: #4CAF50;
+}
+
+.action-btn button:nth-child(2) {
+    background-color: #2196F3;
+}
+
+.dashboard-table {
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin: 20px -10px;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.dashboard-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dashboard-table th {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 14px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.dashboard-table td {
+    font-size: 14px;
+    padding: 12px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.action-btn-back {
+    background-color: #757575;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.action-btn-back::before {
+    content: '←';
+    font-size: 18px;
+}

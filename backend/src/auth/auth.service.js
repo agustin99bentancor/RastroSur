@@ -29,7 +29,7 @@ export async function loginUser(email, password) {
     { expiresIn: "1h" }
   );
 
-  return { token };
+  return { token, user };
 }
 
 export async function registerEmpresa(data) {
@@ -60,5 +60,5 @@ export async function loginEmpresa(email, password) {
     { expiresIn: "1h" }
   );
 
-  return { token };
+  return { token, user: empresa };
 }

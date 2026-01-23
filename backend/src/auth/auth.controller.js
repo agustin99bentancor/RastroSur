@@ -15,7 +15,14 @@ export async function loginU(req, res) {
       req.body.email,
       req.body.password
     );
-    res.json(result);
+    res.cookie("token", result.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 60 * 60 * 1000,
+    });
+
+    res.status(201).json(result.user);
   } catch (err) {
     res.status(401).json({ error: err.message });
   }
@@ -35,8 +42,31 @@ export async function loginE(req, res) {
       req.body.email,
       req.body.password
     );
-    res.json(result);
+    res.cookie("token", result.token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 60 * 60 * 1000,
+    });
+
+    res.status(201).json(result.user);
   } catch (err) {
     res.status(401).json({ error: err.message });
   }
+}
+
+export async function logout(req, res) {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+  });
+  res.status(200).json({ ok: true });
+}
+
+export async function validCookie(req, res) {
+  res.status(200).json({ 
+    valid: true, 
+    user: req.user 
+  });
 }

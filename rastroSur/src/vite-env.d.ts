@@ -1,5 +1,4 @@
 /// <reference types="vite/client" />
 
-declare module '*.png' {
-  const imagePath: string;
-}
+declare module '*.png';
+declare module '*.svg';
