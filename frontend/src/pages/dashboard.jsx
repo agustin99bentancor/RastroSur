@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { allLotes,allGanado } from '../services/authService';
 import './dashboard.css';
 
+
+
 export default function Dashboard() {
     const [view, setView] = useState('menu');
     const [data, setData] = useState([]);
@@ -95,7 +97,7 @@ export default function Dashboard() {
                             <tr key={item.id}>
                                 {Object.entries(item)
                                     .filter(([key]) => key !== 'id')
-                                    .map(([key, value], idx) => (
+                                    .map(([value], idx) => (
                                         <td key={idx} style={{ padding: '10px' }}>
                                             {typeof value === 'object' ? JSON.stringify(value) : String(value)}
                                         </td>

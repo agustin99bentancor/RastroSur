@@ -5,8 +5,8 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
 // Esto es un "hack" necesario porque a veces los iconos no cargan bien en React/Webpack
-import icon from '../../node_modules/leaflet/dist/images/marker-icon.png';
-import iconShadow from '../../node_modules/leaflet/dist/images/marker-shadow.png';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
 import pin from "../assets/pin.png";
 

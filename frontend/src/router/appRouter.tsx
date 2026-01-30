@@ -8,13 +8,16 @@ import NotFound from '../pages/noFound.jsx';
 
 export default function AppRouter() {
   const { isAuthenticated } = useAuth();
+  const data = {
+    user: 'John Doe',
+  };
 
   return (
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route element={<PrivateRoutes />}>
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard data={data}/>} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Route>
