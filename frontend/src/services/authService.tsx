@@ -1,15 +1,10 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:4000/api'; // Ajusta el puerto según tu backend
+const API_URL = 'http://localhost:4000/api';
 
 export interface LoginCredentials {
   email: string;
   password: string;
-}
-
-export interface RegisterData extends LoginCredentials {
-  name?: string;
-  // Agrega otros campos según tu modelo
 }
 
 // Login de usuario

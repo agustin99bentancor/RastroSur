@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { allLotes,allGanado } from '../services/authService';
 import './dashboard.css';
 
-
-
 export default function Dashboard() {
     const [view, setView] = useState('menu');
     const [data, setData] = useState([]);
@@ -27,6 +25,7 @@ export default function Dashboard() {
         try {
             console.log('Fetching vacas...');
             const result = await allGanado();
+            console.log('Vacas fetched:', result);
             setData(result);
             setView('vacas');
         } catch (error) {
@@ -79,14 +78,19 @@ export default function Dashboard() {
             {loading ? (
                 <p>Cargando...</p>
             ) : (
-                <table className="dashboard-table" border="1" style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <table
+                    className="dashboard-table"
+                    border="1"
+                    style={{ width: '100%', borderCollapse: 'collapse' }}
+                >
                     <thead>
                         <tr>
                             {data.length > 0 &&
                                 Object.keys(data[0])
                                     .filter((key) => key !== 'id')
                                     .map((key) => (
-                                        <th key={key} style={{ padding: '10px', textAlign: 'left' }}>
+                                        <th key={key}
+                                            style={{ padding: '10px', textAlign: 'left' }}>
                                             {key}
                                         </th>
                                     ))}
@@ -97,9 +101,11 @@ export default function Dashboard() {
                             <tr key={item.id}>
                                 {Object.entries(item)
                                     .filter(([key]) => key !== 'id')
-                                    .map(([value], idx) => (
-                                        <td key={idx} style={{ padding: '10px' }}>
-                                            {typeof value === 'object' ? JSON.stringify(value) : String(value)}
+                                    .map(([key, value]) => (
+                                        <td key={key} style={{ padding: '10px' }}>
+                                            {
+                                                typeof value === 'object' ? JSON.stringify(value) : String(value)
+                                            }
                                         </td>
                                     ))}
                             </tr>
