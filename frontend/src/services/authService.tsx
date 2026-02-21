@@ -25,6 +25,19 @@ export const loginUser = async (credentials: LoginCredentials) => {
   }
 };
 
+// Logout de usuario
+export const logoutUser = async () => {
+    console.log("Intentando logout...");
+    try {
+        await axios.post('http://localhost:4000/api/auth/logout', {}, { withCredentials: true });
+        return true;
+      } catch (error) {
+        console.error("Logout failed:", error);
+        throw error;
+        return false;
+      }
+}
+
 export const allLotes = async () => {
   try {
     const response = await axios.get(`${API_URL}/lote`, {

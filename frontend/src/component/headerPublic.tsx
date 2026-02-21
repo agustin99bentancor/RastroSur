@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import './header.css';
 import logo from '../assets/logo.svg';
 
-interface HeaderProps {
+interface HeaderPublicProps {
   isAuthenticated: boolean;
   onLogout: () => void;
   onLogin: () => void;
 }
 
-
-export default function Header({ isAuthenticated, onLogout, onLogin }: HeaderProps) {
+export default function HeaderPublic({ isAuthenticated, onLogout, onLogin }: HeaderPublicProps) {
 
     return (
     <nav className="header">

@@ -50,3 +50,44 @@
 .header-right {
     padding-right: 2.5rem;
 }
+
+.profile-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 16px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.icon-button {
+    background: transparent;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-main);
+    transition: background-color 0.2s ease;
+    border-width: 2px;
+    border-color: lightgray;
+    border-radius: 20%;
+}
+
+.icon-button:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.userNameSpan {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  -webkit-font-smoothing: antialiased; /* Suavizado para Mac/Chrome */
+}

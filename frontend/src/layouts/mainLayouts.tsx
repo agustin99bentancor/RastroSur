@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../component/header.jsx';
+import HeaderPublic from '../component/headerPublic.jsx';
 import LoginModal from '../modals/loginModal.tsx';
-import { loginUser,LoginCredentials } from '../services/authService.tsx';
+import { loginUser,LoginCredentials, logoutUser } from '../services/authService.tsx';
 import { useAuth } from '../context/authContext.tsx';
+import axios, { AxiosError } from 'axios';
 
 
 export default function MainLayout() {
@@ -11,12 +12,22 @@ export default function MainLayout() {
     const [showLogin, setShowLogin] = useState(false);
     const [ error , setError ] = useState<string | null>(null);
 
+    function handleLogout() {
+        logoutUser()
+            .then(() => {
+                setAuthenticated(false);
+            })
+            .catch((error) => {
+                console.error("Logout failed:", error);
+            });
+        }
+
   return (
     <>
-        <Header
+        <HeaderPublic
             isAuthenticated={isAuthenticated}
             onLogin={() =>{ setShowLogin(true)}} 
-            onLogout={() => setAuthenticated(false)} 
+            onLogout={handleLogout} 
         />
         {showLogin && (
             <LoginModal
@@ -34,7 +45,11 @@ export default function MainLayout() {
                     setShowLogin(false);
                 } catch (error) {
                     console.error("Login failed:", error);
-                    setError(error instanceof Error ? error.response?.data.error : 'Unknown error');
+                    if (axios.isAxiosError(error)) {
+                        setError(error.response?.data?.error || 'Error de autenticación');
+                    } else {
+                        setError('Error desconocido');
+                    }
                     return;
                 }
             }} 

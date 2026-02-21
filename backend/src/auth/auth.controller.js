@@ -70,3 +70,8 @@ export async function validCookie(req, res) {
     user: req.user 
   });
 }
+
+export async function userId(req, res) {
+  const user = await authService.userId(req.user.userId);
+  res.status(200).json(user);
+}

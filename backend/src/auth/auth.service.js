@@ -62,3 +62,7 @@ export async function loginEmpresa(email, password) {
 
   return { token, user: empresa };
 }
+
+export async function userId(id) {
+  return prisma.usuario.findUnique({ where: { id } });
+}

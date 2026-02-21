@@ -5,22 +5,23 @@ import Dashboard from '../pages/dashboard.jsx';
 import { useAuth } from '../context/authContext.tsx';
 import PrivateRoutes from './protectedRoute.jsx';
 import NotFound from '../pages/noFound.jsx';
+import AdminLayout from '../layouts/adminLayouts.tsx';
 
 export default function AppRouter() {
   const { isAuthenticated } = useAuth();
-  const data = {
-    user: 'John Doe',
-  };
 
   return (
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route element={<PrivateRoutes />}>
-            <Route path="dashboard" element={<Dashboard/>} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
         </Route>
+
+        <Route element={<PrivateRoutes />}>
+          <Route element={<AdminLayout />}>
+              <Route path="dashboard" element={<Dashboard />} />
+          </Route>
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
   );
 }

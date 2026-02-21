@@ -6,6 +6,13 @@ interface AuthContextType {
   isAuthenticated: boolean;
   setAuthenticated: (value: boolean) => void;
   loading: boolean;
+  user: User | null;
+}
+
+interface User {
+  id: string;
+  name: string;
+  email: string;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -13,6 +20,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
 
   // Al montar, verificar si hay sesión válida
   useEffect(() => {
@@ -24,11 +32,18 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       // Llama a un endpoint que valide la cookie
       const res = await axios.get('http://localhost:4000/api/auth/valid-cookie', { withCredentials: true });
       if (res.data.valid == true) {
+        const user = await axios.get('http://localhost:4000/api/auth/user-id', { withCredentials: true });
+        console.log(user.data);
+        setUser({
+          id: user.data.id,
+          name: user.data.nombre,
+          email: user.data.email
+        }); 
         setIsAuthenticated(true);
       } else {
         setIsAuthenticated(false);
       }
-    } catch {
+    } catch (error) {
       setIsAuthenticated(false);
     } finally {
       setLoading(false);
@@ -36,7 +51,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setAuthenticated: setIsAuthenticated, loading }}>
+    <AuthContext.Provider value={{ isAuthenticated, setAuthenticated: setIsAuthenticated, loading, user }}>
       {loading ? <Loading /> : children}
     </AuthContext.Provider>
   );
