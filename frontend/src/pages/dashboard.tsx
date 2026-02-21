@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { allLotes,allGanado } from '../services/authService';
+
 import './dashboard.css';
+
+interface DashboardProps {
+
+}
+
 
 export default function Dashboard() {
     const [view, setView] = useState('menu');
@@ -80,7 +86,7 @@ export default function Dashboard() {
             ) : (
                 <table
                     className="dashboard-table"
-                    border="1"
+                    border={1}
                     style={{ width: '100%', borderCollapse: 'collapse' }}
                 >
                     <thead>

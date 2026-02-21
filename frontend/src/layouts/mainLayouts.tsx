@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../component/header.jsx';
-import LoginModal from '../component/loginModal.tsx';
+import LoginModal from '../modals/loginModal.tsx';
 import { loginUser,LoginCredentials } from '../services/authService.tsx';
 import { useAuth } from '../context/authContext.tsx';
 

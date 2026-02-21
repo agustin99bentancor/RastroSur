@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import Loading from '../pages/loading.jsx';
 import axios from 'axios';
 
 interface AuthContextType {
@@ -36,7 +37,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, setAuthenticated: setIsAuthenticated, loading }}>
-      {loading ? <div>Cargando...</div> : children}
+      {loading ? <Loading /> : children}
     </AuthContext.Provider>
   );
 }

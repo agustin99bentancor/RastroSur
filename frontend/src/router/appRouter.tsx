@@ -17,7 +17,7 @@ export default function AppRouter() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route element={<PrivateRoutes />}>
-            <Route path="dashboard" element={<Dashboard data={data}/>} />
+            <Route path="dashboard" element={<Dashboard/>} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Route>

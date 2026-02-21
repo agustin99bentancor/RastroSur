@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './home.css';
 import cow from  '../assets/homeCow2.jpg';
 import { FaCheck } from "react-icons/fa";
 import MapaBasico from '../component/map.tsx';
 import celScreen  from '../assets/celScreen.png';
+import { useAuth } from '../context/authContext.tsx';
 
 export default function Home() {
+    const { isAuthenticated } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate('/dashboard');
+        }
+    }, [isAuthenticated, navigate]);
+
     return (
         
         <main className="style-light">   
