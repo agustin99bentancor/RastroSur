@@ -3,6 +3,8 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem;
+    border-bottom-width: 2px;
+    border-color: lightgray;
 }
 
 @media (min-width: 1024px) {

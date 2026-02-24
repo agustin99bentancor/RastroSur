@@ -4,9 +4,7 @@ import { allLotes,allGanado } from '../services/authService';
 import './dashboard.css';
 
 interface DashboardProps {
-
 }
-
 
 export default function Dashboard() {
     const [view, setView] = useState('menu');

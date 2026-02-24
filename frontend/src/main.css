@@ -13,3 +13,13 @@
   --bg-app: #F8FAFB;        /* Un blanco apenas azulado, muy limpio */
   --surface: #FFFFFF;       /* Blanco puro para tarjetas/cards */
 }
+
+.layout {
+  display: flex;
+}
+
+.layout main {
+  flex: 1;
+  overflow-y: auto;
+  background-color: var(--bg-app);
+}

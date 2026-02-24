@@ -1,7 +1,7 @@
 import react from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-import HeaderAdmin from "../component/HeaderAdmin.tsx";
-import Sidebar from "../component/Sidebar.tsx";
+import HeaderAdmin from "../component/headerAdmin.tsx";
+import Sidebar from "../component/sidebar.tsx";
 import { useAuth } from "../context/authContext.tsx";
 import axios from "axios";
 import { logoutUser } from "../services/authService.tsx";

@@ -2,8 +2,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { 
     FaHome,
-    FaTrophy,
-    FaBox,
+    FaHorseHead ,
+    FaMapSigns ,
     FaChartBar,
     FaCalendar,
     FaUser
@@ -12,18 +12,15 @@ import {
 const Sidebar: React.FC = () => {
 const menuItems = [
     { path: '/dashboard', icon: FaHome, label: 'Dashboard' },
-    { path: '/ganados', icon: FaTrophy, label: 'Ganados' },
-    { path: '/lotes', icon: FaBox, label: 'Lotes' },
+    //{ path: '/perfil', icon: FaUser, label: 'Perfil' },
+    { path: '/ganado', icon: FaHorseHead, label: 'Ganados' },
+    { path: '/lotes', icon: FaMapSigns, label: 'Lotes' },
     { path: '/estadisticas', icon: FaChartBar, label: 'Estadísticas' },
     { path: '/eventos', icon: FaCalendar, label: 'Eventos' },
-    { path: '/perfil', icon: FaUser, label: 'Perfil' },
 ];
 
 return (
-    <aside className="w-64 bg-gray-800 text-white min-h-screen p-4">
-        <div className="mb-8">
-            <h1 className="text-2xl font-bold text-center">RastroSur</h1>
-        </div>
+    <aside className="w-64 text-white p-4 border-r-2 border-gray-200">
         
         <nav>
             <ul className="space-y-2">
@@ -35,7 +32,7 @@ return (
                                 `flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                                     isActive
                                         ? 'bg-blue-600 text-white'
-                                        : 'text-gray-300 hover:bg-gray-700'
+                                        : 'text-gray-800 hover:bg-gray-200'
                                 }`
                             }
                         >
