@@ -67,3 +67,19 @@ export const allGanado = async () => {
     }
   }
 }
+
+export const allEvents = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/events`, {
+      withCredentials: true,
+    });
+    console.log("Eventos recibidos:", response.data);
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error("Error en allEvents:", error.response?.data || error.message);}
+    else {
+      console.error("Error desconocido:", error);
+    }
+  }
+}
