@@ -16,7 +16,7 @@ interface GlineProps {
 
 const Gline: React.FC<GlineProps> = ({ title, data }) => {
     return (
-        <Paper sx={{ p: 3, height: 400 }}>
+        <Paper sx={{ p: 3, height: 400, paddingBottom: 5 }}>
             <Typography variant="h6" gutterBottom fontWeight="bold">
                 {title}
             </Typography>
@@ -26,7 +26,6 @@ const Gline: React.FC<GlineProps> = ({ title, data }) => {
                     <XAxis dataKey="name" />
                     <YAxis />
                     <Tooltip />
-                    <Legend />
                     <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
                 </LineChart>
             </ResponsiveContainer>

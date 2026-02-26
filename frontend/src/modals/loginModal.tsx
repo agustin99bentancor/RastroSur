@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ModalProps {
     onClose: () => void;
@@ -9,6 +9,11 @@ interface ModalProps {
 export default function LoginModal({ onClose, onSuccess, error }: ModalProps) {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    setName("admin@campo.com");
+    setPassword("123456");
+  }, []);
 
   return (
     <div style={overlay}>
