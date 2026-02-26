@@ -13,7 +13,6 @@ export const loginUser = async (credentials: LoginCredentials) => {
     const response = await axios.post(`${API_URL}/auth/login-user`, credentials, {
       withCredentials: true,
     });
-    console.log("Respuesta recibida:", response);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -73,12 +72,24 @@ export const allEvents = async () => {
     const response = await axios.get(`${API_URL}/events`, {
       withCredentials: true,
     });
-    console.log("Eventos recibidos:", response.data);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error("Error en allEvents:", error.response?.data || error.message);}
     else {
+      console.error("Error desconocido:", error);
+    }
+  }
+}
+
+export const dashboardInfo = async (empresaId: number) => {
+  try {
+    const response = await axios.get(`${API_URL}/dashboard/${empresaId}`, { withCredentials: true });
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error("Error en dashboardInfo:", error.response?.data || error.message);
+    } else {
       console.error("Error desconocido:", error);
     }
   }

@@ -1,7 +1,8 @@
 import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
+import './gline.css';
 
 
 interface DataPoint {
@@ -16,7 +17,7 @@ interface GlineProps {
 
 const Gline: React.FC<GlineProps> = ({ title, data }) => {
     return (
-        <Paper sx={{ p: 3, height: 400, paddingBottom: 5 }}>
+        <Paper sx={{ p: 3, height: 400, paddingBottom: 10 }}>
             <Typography variant="h6" gutterBottom fontWeight="bold">
                 {title}
             </Typography>

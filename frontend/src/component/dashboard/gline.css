@@ -99,3 +99,8 @@
 .chart-container {
   animation: fadeInUp 0.5s ease-out;
 }
+
+.recharts-surface {
+  pointer-events: none;
+  user-select: none;
+}

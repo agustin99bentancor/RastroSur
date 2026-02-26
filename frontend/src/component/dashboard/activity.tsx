@@ -10,6 +10,7 @@ import Divider from '@mui/material/Divider';
 
 interface ActivityProps {
     events: any[];
+    onclick?: (event: any) => void;
 }
 
 const formatDate = (fecha: string) => {
@@ -17,7 +18,7 @@ const formatDate = (fecha: string) => {
     return date.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
 };
 
-const Activity = ({ events }: ActivityProps) => {
+const Activity = ({ events, onclick }: ActivityProps) => {
   return (
         <Paper sx={{ p: 3 }}>
             <Typography variant="h6" gutterBottom fontWeight="bold" sx={{ mb: 2 }}>
@@ -30,7 +31,7 @@ const Activity = ({ events }: ActivityProps) => {
                     </Typography>
                 ) : (
                     events.map((evento: any, index: number) => (
-                        <Box key={evento.id}>
+                        <Box key={evento.id} onClick={() => onclick && onclick(evento)} sx={{ cursor: 'pointer' }}>
                             <ListItem sx={{ px: 0 }}>
                                 <ListItemText
                                     primary={
